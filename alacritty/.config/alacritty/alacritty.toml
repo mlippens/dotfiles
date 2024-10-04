@@ -1,0 +1,21 @@
+import = ["~/.config/alacritty/catppuccin-frappe.toml"]
+
+[window]
+padding.x = 10
+padding.y = 0
+
+#decorations = "Buttonless"
+opacity = 0.9
+blur = true
+option_as_alt = "Both"
+
+[font]
+size = 20
+normal.family = "UbuntuMono Nerd Font Mono"
+normal.style = "Regular"
+
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Command", chars = "\u001BF" },
+  { key = "Left",  mods = "Command", chars = "\u001BB" },
+]
