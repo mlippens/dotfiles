@@ -115,6 +115,7 @@ require("lazy").setup({
 		},
 	},
 	{ "mfussenegger/nvim-lint", lazy = true },
+	{ "github/copilot.vim" },
 }, {})
 
 -- Oil
