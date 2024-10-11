@@ -116,7 +116,20 @@ require("lazy").setup({
 	},
 	{ "mfussenegger/nvim-lint", lazy = true },
 	{ "github/copilot.vim" },
-}, {})
+	{
+		"christoomey/vim-tmux-navigator",
+		vim.keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>", { desc = "Navigate Left" }),
+		vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>", { desc = "Navigate Right" }),
+		vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>", { desc = "Navigate Down" }),
+		vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>", { desc = "Navigate Up" }),
+	},
+	{
+		"vim-test/vim-test",
+		event = onFileEvent,
+		lazy = true,
+		vim.keymap.set("n", "<leader>tt", ":TestFile<CR>", { desc = "Run tests" }),
+	},
+})
 
 -- Oil
 require("oil").setup()
@@ -184,10 +197,10 @@ require("lualine").setup({
 require("Comment").setup()
 
 -- keymaps for window navigation
-vim.keymap.set("n", "<M-h>", [[<Cmd>wincmd h<CR>]])
-vim.keymap.set("n", "<M-j>", [[<Cmd>wincmd j<CR>]])
-vim.keymap.set("n", "<M-k>", [[<Cmd>wincmd k<CR>]])
-vim.keymap.set("n", "<M-l>", [[<Cmd>wincmd l<CR>]])
+vim.keymap.set("n", "<A-h>", [[<Cmd>wincmd h<CR>]])
+vim.keymap.set("n", "<A-j>", [[<Cmd>wincmd j<CR>]])
+vim.keymap.set("n", "<A-k>", [[<Cmd>wincmd k<CR>]])
+vim.keymap.set("n", "<A-l>", [[<Cmd>wincmd l<CR>]])
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
