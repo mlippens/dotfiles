@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export PATH="$PATH:$HOME/bin"
 
+alias ls='eza'
 alias ll='eza -l'
 alias vi='nvim'
 alias vim='nvim'
@@ -147,6 +148,10 @@ fif() {
 
 
 [[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
