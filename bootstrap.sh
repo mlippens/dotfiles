@@ -9,8 +9,8 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 rm -rf ~/nvim-linux64
 tar -C ~ -xzf nvim-linux64.tar.gz
 
-read -p "Do you want to add nvim as editor to your .bashrc? (y/n) " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+read -p "Do you want to proceed adding nvim to your bashrc file? (Y/n): " answer
+if [[ $(echo "$answer" | tr '[:upper:]' '[:lower:]') == 'y' ]]; then
   echo "export PATH=$PATH:~/nvim-linux64/bin" >> ~/.bashrc
   echo "alias vim=nvim" >> ~/.bashrc
   echo "alias vi=nvim" >> ~/.bashrc
