@@ -1,8 +1,3 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -77,6 +72,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
+    zsh-lazyload
     docker-compose
     git
 )
@@ -118,9 +114,6 @@ alias vim='nvim'
 alias code='code-insiders'
 alias pu='pulumi'
 
-eval "$(direnv hook zsh)"
-eval "$(starship init zsh)" 
-
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 complete -C '/usr/local/bin/aws_completer' aws
@@ -146,14 +139,15 @@ fif() {
     file="$(rga --max-count=1 --ignore-case --files-with-matches --no-messages "$@" | fzf-tmux +m --preview="rga --ignore-case --pretty --context 10 '"$@"' {}")" && nvim "$file"
 }
 
-
 [[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+lazyload nvm -- '[ -s "$NVM_ROOT/nvm.sh" ] && 
+    \. "$NVM_ROOT/nvm.sh" 
+        [ -s "$NVM_ROOT/bash_completion" ] && 
+    \. "$NVM_ROOT/bash_completion"'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+lazyload pyenv -- 'export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init --path)"'
 
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)" 
