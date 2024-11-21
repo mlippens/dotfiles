@@ -69,11 +69,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    zsh-autosuggestions
-    zsh-syntax-highlighting
     zsh-completions
-    zsh-lazyload
-    docker-compose
     git
 )
 
@@ -114,9 +110,22 @@ alias vim='nvim'
 alias code='code-insiders'
 alias pu='pulumi'
 
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-complete -C '/usr/local/bin/aws_completer' aws
+# docker aliases
+alias dcb='docker compose build'
+alias dcdn='docker compose down'
+alias dce='docker compose exec'
+alias dcps='docker compose ps'
+alias dcu='docker compose up'
+alias dclf='docker compose logs -f'
+
+alias dsls='docker service ls'
+alias dsrm='docker service rm'
+alias dslf='docker service logs -f'
+
+
+#autoload bashcompinit && bashcompinit
+#autoload -Uz compinit && compinit
+#complete -C '/usr/local/bin/aws_completer' aws
 
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -139,7 +148,32 @@ fif() {
     file="$(rga --max-count=1 --ignore-case --files-with-matches --no-messages "$@" | fzf-tmux +m --preview="rga --ignore-case --pretty --context 10 '"$@"' {}")" && nvim "$file"
 }
 
-[[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light qoomon/zsh-lazyload
 
 lazyload nvm -- '[ -s "$NVM_ROOT/nvm.sh" ] && 
     \. "$NVM_ROOT/nvm.sh" 
@@ -151,3 +185,4 @@ lazyload pyenv -- 'export PATH=$PYENV_ROOT/bin:$PATH
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)" 
+
