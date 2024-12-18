@@ -109,15 +109,18 @@ alias vi='nvim'
 alias vim='nvim'
 alias code='code-insiders'
 alias pu='pulumi'
+alias p='pnpm'
 
 # docker aliases
 alias dcb='docker compose build'
 alias dcdn='docker compose down'
 alias dce='docker compose exec'
 alias dcps='docker compose ps'
-alias dcu='docker compose up'
+alias dcup='docker compose up'
+alias dcupd='docker compose up -d'
 alias dclf='docker compose logs -f'
 
+alias dsps='docker service ps'
 alias dsls='docker service ls'
 alias dsrm='docker service rm'
 alias dslf='docker service logs -f'
@@ -127,9 +130,6 @@ alias dslf='docker service logs -f'
 #autoload -Uz compinit && compinit
 #complete -C '/usr/local/bin/aws_completer' aws
 
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
 
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
@@ -175,13 +175,11 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light qoomon/zsh-lazyload
 
-lazyload nvm -- '[ -s "$NVM_ROOT/nvm.sh" ] && 
-    \. "$NVM_ROOT/nvm.sh" 
-        [ -s "$NVM_ROOT/bash_completion" ] && 
-    \. "$NVM_ROOT/bash_completion"'
 
-lazyload pyenv -- 'export PATH=$PYENV_ROOT/bin:$PATH
-    eval "$(pyenv init --path)"'
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)" 
