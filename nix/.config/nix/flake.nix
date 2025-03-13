@@ -30,6 +30,7 @@
 	  pkgs.fnm
 	  pkgs.fzf
 	  pkgs.gh
+	  pkgs.kubernetes-helm
 	  pkgs.lazydocker
 	  pkgs.lazygit
 	  pkgs.lima
@@ -49,6 +50,7 @@
       homebrew = {
 	enable = true;
 	brews = [
+	  "argocd"
 	  "k9s"
 	  "minikube"
 	  "libomp"
