@@ -131,8 +131,28 @@ require("lazy").setup({
   },
 })
 
--- Oil
-require("oil").setup()
+-- Oil - default keymaps but override horizontal split for compatibility with tmux
+require("oil").setup({
+  keymaps = {
+    ["g?"] = { "actions.show_help", mode = "n" },
+    ["<CR>"] = "actions.select",
+    ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+    ["<C-f>"] = { "actions.select", opts = { horizontal = true } },
+    ["<C-t>"] = { "actions.select", opts = { tab = true } },
+    ["<C-p>"] = "actions.preview",
+    ["<C-c>"] = { "actions.close", mode = "n" },
+    ["<C-l>"] = "actions.refresh",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["_"] = { "actions.open_cwd", mode = "n" },
+    ["`"] = { "actions.cd", mode = "n" },
+    ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+    ["gs"] = { "actions.change_sort", mode = "n" },
+    ["gx"] = "actions.open_external",
+    ["g."] = { "actions.toggle_hidden", mode = "n" },
+    ["g\\"] = { "actions.toggle_trash", mode = "n" },
+  },
+  use_default_keymaps = false
+})
 vim.keymap.set("n", "-", function()
   require("oil").open()
 end, { desc = "Open parent directory" })
@@ -467,4 +487,5 @@ cmp.setup({
   },
 })
 
+vim.opt.tabstop = 4
 -- vim: ts=2 sts=2 sw=2 et
