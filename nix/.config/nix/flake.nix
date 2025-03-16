@@ -51,6 +51,7 @@
 	enable = true;
 	brews = [
 	  "argocd"
+	  "eksctl"
 	  "k9s"
 	  "minikube"
 	  "libomp"
