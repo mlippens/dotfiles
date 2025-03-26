@@ -40,7 +40,6 @@
 	  pkgs.python312
 	  pkgs.python312Packages.pipx
 	  pkgs.python312Packages.pip
-      #pkgs.rectangle
 	  pkgs.starship
 	  pkgs.stow
 	  pkgs.tmux
