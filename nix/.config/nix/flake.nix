@@ -30,16 +30,18 @@
 	  pkgs.fnm
 	  pkgs.fzf
 	  pkgs.gh
+	  pkgs.jdk23
 	  pkgs.kubernetes-helm
 	  pkgs.lazydocker
 	  pkgs.lazygit
 	  pkgs.lima
+	  pkgs.maven
 	  pkgs.neovim
 	  pkgs.neofetch
 	  pkgs.python312
 	  pkgs.python312Packages.pipx
 	  pkgs.python312Packages.pip
-	  pkgs.rectangle
+      #pkgs.rectangle
 	  pkgs.starship
 	  pkgs.stow
 	  pkgs.tmux
@@ -65,6 +67,7 @@
 	  "ghostty"
 	  "gpg-suite"
 	  "mos"
+      "nikitabobko/tap/aerospace"									
 	  "notion"
 	  "raycast"
 	  "shottr"
