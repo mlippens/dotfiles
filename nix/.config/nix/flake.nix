@@ -35,7 +35,6 @@
 	  pkgs.lazydocker
 	  pkgs.lazygit
 	  pkgs.lima
-	  pkgs.maven
 	  pkgs.neovim
 	  pkgs.neofetch
 	  pkgs.python312
