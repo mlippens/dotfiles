@@ -104,8 +104,8 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         -- Use a sub-list to run only the first available formatter
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
+        javascript = { "prettierd", "eslint_d" },
+        typescript = { "prettierd", "eslint_d" },
       },
       format_on_save = {
         -- These options will be passed to conform.format()
@@ -488,4 +488,5 @@ cmp.setup({
 })
 
 vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 -- vim: ts=2 sts=2 sw=2 et
