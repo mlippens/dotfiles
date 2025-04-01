@@ -27,6 +27,7 @@ require("lazy").setup({
   { "stevearc/oil.nvim" },
   "navarasu/onedark.nvim",                                       -- Colorscheme
   "nvim-lualine/lualine.nvim",                                   -- Fancier statusline
+  "tpope/vim-surround",
   -- Add indentation guides even on blank lines
   "lukas-reineke/indent-blankline.nvim",
   -- Add git related info in the signs columns and popups
