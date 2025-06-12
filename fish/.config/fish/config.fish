@@ -22,13 +22,14 @@ alias vim nvim
 alias p pnpm
 alias pu pulumi
 alias cdk "npx --yes cdk"
-alias ls "eza"
+alias ls eza
 alias ll "eza -lah"
 alias yal "aws sso login --profile=yuso"
 
 if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
+#eval "$($HOME/miniforge3/bin/conda shell.fish hook)"
 
 fzf --fish | source
 zoxide init fish | source
@@ -37,3 +38,20 @@ fnm env --use-on-cd --shell fish | source
 
 # should be last
 starship init fish | source
+
+# Created by `pipx` on 2025-04-25 08:20:47
+set PATH $PATH /Users/michael/.local/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/homebrew/Caskroom/miniforge/base/bin/conda
+    eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/opt/homebrew/Caskroom/miniforge/base/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+

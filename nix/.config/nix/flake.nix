@@ -55,6 +55,7 @@
 	  "k9s"
 	  "minikube"
 	  "libomp"
+    "sops"
 	];
 	casks = [
 	  "1password-cli"
@@ -64,8 +65,9 @@
 	  "electorrent"
 	  "ghostty"
 	  "gpg-suite"
+	  "miniforge"
 	  "mos"
-      "nikitabobko/tap/aerospace"									
+      "nikitabobko/tap/aerospace"
 	  "notion"
 	  "raycast"
 	  "shottr"
@@ -85,6 +87,8 @@
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
       system.stateVersion = 6;
+
+      system.primaryUser = "michael";
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
