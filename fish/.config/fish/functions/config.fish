@@ -20,20 +20,19 @@ alias g git
 alias vi nvim
 alias vim nvim
 alias p pnpm
-alias pu pulumi
-alias cdk "npx --yes cdk"
-alias ls "eza"
+alias ls eza
 alias ll "eza -lah"
-alias yal "aws sso login --profile=yuso"
 
 if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
 
-fzf --fish | source
-zoxide init fish | source
-direnv hook fish | source
-fnm env --use-on-cd --shell fish | source
+if status is-interactive
+    fzf --fish | source
+    zoxide init fish | source
+    direnv hook fish | source
+    fnm env --use-on-cd --shell fish | source
 
-# should be last
-starship init fish | source
+    # should be last
+    starship init fish | source
+end

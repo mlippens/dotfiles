@@ -9,7 +9,7 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-size = 20
+size = 14
 normal.family = "UbuntuMono Nerd Font Mono"
 normal.style = "Regular"
 
