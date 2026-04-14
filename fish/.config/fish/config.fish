@@ -54,3 +54,6 @@ if status is-interactive
     # should be last
     starship init fish | source
 end
+
+# Added by LM Studio CLI tool (lms)
+set -gx PATH $PATH /home/michael/.lmstudio/bin

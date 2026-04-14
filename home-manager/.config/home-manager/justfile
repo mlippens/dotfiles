@@ -1,0 +1,5 @@
+rebuild:
+  nix run home-manager/master -- switch
+
+rollback:
+  nix run home-manager/master -- switch --rollback
