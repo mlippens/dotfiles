@@ -37,4 +37,5 @@ SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/michael/\x2ecargo/bin\x1e/home/michael/\x2elocal/bin\x1e/home/michael/bin
+SETUVAR fish_user_paths:/home/michael/\x2eopencode/bin\x1e/home/michael/\x2ecargo/bin\x1e/home/michael/\x2elocal/bin\x1e/home/michael/bin
+SETUVAR pipefail:\x1d
