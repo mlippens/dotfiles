@@ -7,7 +7,6 @@
   # Keep this at the initial Home Manager release you started with.
   home.stateVersion = "25.11";
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   programs.gpg.enable = true;
@@ -41,7 +40,8 @@
     '';
   };
 
-  # Ensure fish shells expose a valid TTY to gpg/pinentry.
+  # Fish is managed via stow at ~/dotfiles/fish/. HM only handles GPG_TTY
+  # init, dropped into conf.d so the stowed config.fish stays in charge.
   home.file.".config/fish/conf.d/99-gpg-tty.fish".text = ''
     if status is-interactive
       set -gx GPG_TTY (tty)
@@ -49,44 +49,55 @@
     end
   '';
 
+  programs.git.enable = true;
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
+  programs.starship.enable = true;
+  programs.tmux.enable = true;
+  programs.neovim.enable = true;
+  programs.lazygit.enable = true;
+  programs.htop.enable = true;
+  programs.btop.enable = true;
+  programs.k9s.enable = true;
+  programs.jq.enable = true;
+
   home.packages = with pkgs; [
     awscli
-    btop
     dbeaver-bin
-    delta
     difftastic
-    direnv
+    distrobox
     docker
     docker-compose
     eza
     fd
+    fish
     gpgme
     fnm
-    fish
-    fzf
-    git
-    gnupg
-    pinentry-curses
     go
     google-cloud-sdk
-    htop
     hyperfine
-    jq
-    k9s
     kubectl
     lazydocker
-    lazygit
     neofetch
-    neovim
     ngrok
     nodejs
-    oh-my-zsh
+    podman
+    podman-desktop
+    podman-tui
     ripgrep
-    starship
     stow
     tailscale
-    tmux
+    terraform
     yq
-    zoxide
   ];
 }

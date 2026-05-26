@@ -43,6 +43,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # opencode
 fish_add_path /home/michael/.opencode/bin
+fish_add_path /home/michael/.local/xonsh-env/xbin
+
 source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
 
 if status is-interactive
