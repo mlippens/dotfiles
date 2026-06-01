@@ -5,7 +5,7 @@
   home.username = "michael";
   home.homeDirectory = "/home/michael";
   # Keep this at the initial Home Manager release you started with.
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
 
@@ -49,7 +49,19 @@
     end
   '';
 
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    settings = {
+      user = {
+        email = "michael.lippens@robovision.eu";
+        name = "Michael Lippens";
+        signingKey = "7209694B7651BDA1";
+      };
+      commit.gpgSign = true;
+      tag.gpgSign = true;
+    };
+  };
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
@@ -73,31 +85,47 @@
 
   home.packages = with pkgs; [
     awscli
+    code-cursor
     dbeaver-bin
     difftastic
     distrobox
     docker
     docker-compose
     eza
+    fastfetch
     fd
     fish
+    gemini-cli
     gpgme
     fnm
+    git
+    gitkraken
+    glab
     go
     google-cloud-sdk
+    google-chrome
     hyperfine
+    just
     kubectl
+    k9s
     lazydocker
-    neofetch
+    lazygit
     ngrok
     nodejs
     podman
     podman-desktop
     podman-tui
     ripgrep
+    slack
+    spotify
     stow
     tailscale
     terraform
+    vim
+    vscode
+    wezterm
+    wl-clipboard
     yq
+    zed-editor
   ];
 }

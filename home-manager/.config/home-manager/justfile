@@ -1,5 +1,2 @@
-rebuild:
-  nix run home-manager/release-25.11 -- -b backup switch
-
-rollback:
-  nix run home-manager/release-25.11 -- switch --rollback
+switch:
+ home-manager switch --flake .#michael 

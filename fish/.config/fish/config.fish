@@ -39,14 +39,6 @@ if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     fenv "source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 end
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# opencode
-fish_add_path /home/michael/.opencode/bin
-fish_add_path /home/michael/.local/xonsh-env/xbin
-
-source ~/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
-
 if status is-interactive
     fzf --fish | source
     zoxide init fish | source
@@ -59,3 +51,4 @@ end
 
 # Added by LM Studio CLI tool (lms)
 set -gx PATH $PATH /home/michael/.lmstudio/bin
+source /home/michael/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script

@@ -1,0 +1,1 @@
+/nix/store/yxp02w9wbcppvaxgprizim8qmz6gp75g-home-manager-files/.config/fish/conf.d/99-gpg-tty.fish
