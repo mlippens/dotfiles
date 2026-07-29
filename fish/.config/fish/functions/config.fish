@@ -12,7 +12,9 @@ fish_add_path ~/.local/bin
 
 fish_add_path /opt/homebrew/opt/mysql-client/bin
 # nix path; due to lack of fish integration in /etc/default
-fish_add_path /run/current-system/sw/bin
+fish_add_path --append /run/current-system/sw/bin
+# setuid wrappers (sudo, pkexec) must beat the store symlinks in sw/bin
+fish_add_path /run/wrappers/bin
 
 set EDITOR nvim
 

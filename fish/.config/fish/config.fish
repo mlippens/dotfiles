@@ -9,6 +9,7 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 fish_add_path ~/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
+fish_add_path ~/go/bin
 
 # Load local environment variables if the file exists
 if test -f ~/.config/fish/local.env
@@ -52,3 +53,6 @@ end
 # Added by LM Studio CLI tool (lms)
 set -gx PATH $PATH /home/michael/.lmstudio/bin
 source /home/michael/.safe-chain/scripts/init-fish.fish # Safe-chain Fish initialization script
+
+# Pi
+fish_add_path "/home/michael/.local/share/fnm/node-versions/v22.22.3/installation/bin"

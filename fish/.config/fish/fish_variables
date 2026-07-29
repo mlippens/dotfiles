@@ -1,5 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/home/michael/\x2elocal/xonsh\x2denv/xbin\x1e/home/michael/\x2eopencode/bin\x1e/home/michael/\x2ecargo/bin\x1e/home/michael/\x2elocal/bin\x1e/home/michael/bin
+SETUVAR fish_user_paths:/home/michael/\x2elocal/share/fnm/node\x2dversions/v22\x2e22\x2e3/installation/bin\x1e/home/michael/go/bin\x1e/run/wrappers/bin\x1e/home/michael/\x2elocal/xonsh\x2denv/xbin\x1e/home/michael/\x2eopencode/bin\x1e/home/michael/\x2ecargo/bin\x1e/home/michael/\x2elocal/bin\x1e/home/michael/bin\x1e/run/current\x2dsystem/sw/bin
 SETUVAR pipefail:\x1d

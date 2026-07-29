@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-qt5-1.1.12"
+  ];
   home.username = "michael";
   home.homeDirectory = "/home/michael";
   # Keep this at the initial Home Manager release you started with.
@@ -72,6 +75,22 @@
     nix-direnv.enable = true;
   };
 
+  services.flatpak = {
+    enable = true;
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
+    packages = [
+      "app.zen_browser.zen"
+      "com.stremio.Stremio"
+      "com.axosoft.GitKraken"
+      "dev.zed.Zed"
+    ];
+  };
+
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.starship.enable = true;
@@ -83,49 +102,58 @@
   programs.k9s.enable = true;
   programs.jq.enable = true;
 
-  home.packages = with pkgs; [
-    awscli
-    code-cursor
-    dbeaver-bin
-    difftastic
-    distrobox
-    docker
-    docker-compose
-    eza
-    fastfetch
-    fd
-    fish
-    gemini-cli
-    gpgme
-    fnm
-    git
-    gitkraken
-    glab
-    go
-    google-cloud-sdk
-    google-chrome
-    hyperfine
-    just
-    kubectl
-    k9s
-    lazydocker
-    lazygit
-    ngrok
-    nodejs
-    podman
-    podman-desktop
-    podman-tui
-    ripgrep
-    slack
-    spotify
-    stow
-    tailscale
-    terraform
-    vim
-    vscode
-    wezterm
-    wl-clipboard
-    yq
-    zed-editor
+  
+  home.packages = [
+    pkgs.awscli2
+    pkgs.bubblewrap
+    pkgs.busybox
+    pkgs.dbeaver-bin
+    pkgs.difftastic
+    pkgs.dig
+    pkgs.distrobox
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.dpkg
+    pkgs.eza
+    pkgs.fastfetch
+    pkgs.fd
+    pkgs.fish
+    pkgs.gemini-cli
+    pkgs.gpgme
+    pkgs.fnm
+    pkgs.git
+    pkgs.gh
+    pkgs.glab
+    pkgs.go
+    pkgs.google-cloud-sdk
+    pkgs.google-chrome
+    pkgs.hyperfine
+    pkgs.just
+    pkgs.kubectl
+    pkgs.k9s
+    pkgs.lazydocker
+    pkgs.lazygit
+    pkgs.ngrok
+    pkgs.nodejs
+    pkgs.obsidian
+    pkgs.podman
+    pkgs.podman-desktop
+    pkgs.podman-tui
+    pkgs.ripgrep
+    pkgs.rustup
+    pkgs.slack
+    pkgs.spotify
+    pkgs.socat
+    pkgs.sox # claude voice mode
+    pkgs.stow
+    pkgs.tailscale
+    pkgs.terraform
+    pkgs.ventoy-full-qt
+    pkgs.vim
+    pkgs.vscode
+    pkgs-unstable.warp-terminal
+    pkgs.wezterm
+    pkgs.wl-clipboard
+    pkgs.yq
   ];
 }
