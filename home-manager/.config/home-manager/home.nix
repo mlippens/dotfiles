@@ -87,7 +87,6 @@
       "app.zen_browser.zen"
       "com.stremio.Stremio"
       "com.axosoft.GitKraken"
-      "dev.zed.Zed"
     ];
   };
 
@@ -141,6 +140,7 @@
     pkgs.podman-tui
     pkgs.ripgrep
     pkgs.rustup
+    pkgs.pass
     pkgs.slack
     pkgs.spotify
     pkgs.socat
@@ -155,5 +155,6 @@
     pkgs.wezterm
     pkgs.wl-clipboard
     pkgs.yq
+    pkgs-unstable.zed-editor
   ];
 }
