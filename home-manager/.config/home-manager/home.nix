@@ -140,14 +140,16 @@
     pkgs.podman-tui
     pkgs.ripgrep
     pkgs.rustup
+    pkgs.packer
     pkgs.pass
     pkgs.slack
     pkgs.spotify
+    pkgs.ssm-session-manager-plugin
     pkgs.socat
     pkgs.sox # claude voice mode
     pkgs.stow
     pkgs.tailscale
-    pkgs.terraform
+    pkgs-unstable.terraform
     pkgs.ventoy-full-qt
     pkgs.vim
     pkgs.vscode
