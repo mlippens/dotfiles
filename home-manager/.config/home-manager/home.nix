@@ -86,7 +86,6 @@
     packages = [
       "app.zen_browser.zen"
       "com.stremio.Stremio"
-      "com.axosoft.GitKraken"
     ];
   };
 
@@ -121,6 +120,7 @@
     pkgs.gpgme
     pkgs.fnm
     pkgs.git
+    pkgs-unstable.gitkraken
     pkgs.gh
     pkgs.glab
     pkgs.go
