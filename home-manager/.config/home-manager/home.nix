@@ -131,6 +131,6 @@
     pkgs.vim
     pkgs.vscode
     pkgs.wl-clipboard
-    pkgs.yq
+    pkgs.yq-go
   ];
 }
