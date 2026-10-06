@@ -1,10 +1,8 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-unstable, tuios, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-qt5-1.1.12"
-  ];
+
   home.username = "michael";
   home.homeDirectory = "/home/michael";
   # Keep this at the initial Home Manager release you started with.
@@ -75,24 +73,10 @@
     nix-direnv.enable = true;
   };
 
-  services.flatpak = {
-    enable = true;
-    remotes = [
-      {
-        name = "flathub";
-        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      }
-    ];
-    packages = [
-      "app.zen_browser.zen"
-      "com.stremio.Stremio"
-    ];
-  };
-
+  
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.starship.enable = true;
-  programs.tmux.enable = true;
   programs.neovim.enable = true;
   programs.lazygit.enable = true;
   programs.htop.enable = true;
@@ -104,13 +88,10 @@
   home.packages = [
     pkgs.awscli2
     pkgs.bubblewrap
-    pkgs.busybox
     pkgs.dbeaver-bin
     pkgs.difftastic
     pkgs.dig
     pkgs.distrobox
-    pkgs.docker
-    pkgs.docker-compose
     pkgs.dpkg
     pkgs.eza
     pkgs.fastfetch
@@ -120,7 +101,6 @@
     pkgs.gpgme
     pkgs.fnm
     pkgs.git
-    pkgs-unstable.gitkraken
     pkgs.gh
     pkgs.glab
     pkgs.go
@@ -134,10 +114,6 @@
     pkgs.lazygit
     pkgs.ngrok
     pkgs.nodejs
-    pkgs.obsidian
-    pkgs.podman
-    pkgs.podman-desktop
-    pkgs.podman-tui
     pkgs.ripgrep
     pkgs.rustup
     pkgs.packer
@@ -148,15 +124,13 @@
     pkgs.socat
     pkgs.sox # claude voice mode
     pkgs.stow
+    pkgs.tmux
+    tuios
     pkgs.tailscale
     pkgs-unstable.terraform
-    pkgs.ventoy-full-qt
     pkgs.vim
     pkgs.vscode
-    pkgs-unstable.warp-terminal
-    pkgs.wezterm
     pkgs.wl-clipboard
     pkgs.yq
-    pkgs-unstable.zed-editor
   ];
 }

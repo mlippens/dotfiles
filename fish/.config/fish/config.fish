@@ -25,6 +25,11 @@ alias p pnpm
 alias ls eza
 alias ll "eza -lah"
 
+abbr -a -- .. 'cd ..'
+abbr -a -- ... 'cd ../..'
+abbr -a -- .... 'cd ../../..'
+abbr -a -- ..... 'cd ../../../..'
+
 set EDITOR nvim
 set -gx NVIM_APPNAME lazyvim
 
@@ -35,16 +40,12 @@ function xpj --description "Pipe clipboard to jq (using xclip)"
     wl-copy -o | jq .
 end
 
-if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-    fenv "source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-end
-
 if status is-interactive
     fzf --fish | source
     zoxide init fish | source
     direnv hook fish | source
     fnm env --use-on-cd --shell fish | source
+    wtp shell-init fish | source
 
     # should be last
     starship init fish | source
